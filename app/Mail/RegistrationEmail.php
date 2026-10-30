@@ -13,17 +13,13 @@ class RegistrationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-
-    public $user_email;
-    public $user_name;
-    public function __construct(string $user_email, string $user_name)
-    {
-        $this->user_email = $user_email;
-        $this->user_name = $user_name;
-    }
+    public function __construct(
+        public string $userName,
+        public string $ticketName,
+        public int $ticketQuantity,
+        public int $totalPrice,
+        public string $bookingCode,
+    ) {}
 
     /**
      * Get the message envelope.
@@ -31,7 +27,7 @@ class RegistrationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your Registration is Successful',
+            subject: 'Pendaftaran konser berhasil - The Eras Night',
         );
     }
 
@@ -41,9 +37,17 @@ class RegistrationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail-template.registration-succesful',
+            view: 'mail-template.registration-successful',
             with: [
-                'user_name' => $this->user_name,
+                'userName' => $this->userName,
+                'ticketName' => $this->ticketName,
+                'ticketQuantity' => $this->ticketQuantity,
+                'totalPrice' => $this->totalPrice,
+                'bookingCode' => $this->bookingCode,
+                'eventDate' => 'Minggu, 13 Desember 2026',
+                'eventTime' => '18.30 WIB',
+                'doorTime' => '16.00 WIB',
+                'venue' => 'Jakarta, Indonesia (lokasi simulasi)',
             ],
         );
     }

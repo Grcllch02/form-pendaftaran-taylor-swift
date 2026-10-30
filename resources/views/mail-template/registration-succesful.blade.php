@@ -1,1 +1,0 @@
-<h1>Selamat anda berhasil registrasi, {{ $user_name }}!</h1>

@@ -48,7 +48,14 @@ class ConcertRegistrationTest extends TestCase
             });
 
         Mail::assertSent(RegistrationEmail::class, function (RegistrationEmail $mail): bool {
-            return $mail->hasTo('fan@example.com');
+            $content = $mail->render();
+
+            return $mail->hasTo('fan@example.com')
+                && str_contains($content, 'Taylor Fan')
+                && str_contains($content, 'CAT 1')
+                && str_contains($content, 'Minggu, 13 Desember 2026')
+                && str_contains($content, '18.30 WIB')
+                && str_contains($content, '6.400.000');
         });
 
         $this->assertDatabaseHas('concert_registrations', [

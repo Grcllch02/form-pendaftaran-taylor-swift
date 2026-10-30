@@ -36,12 +36,12 @@
                 <div class="event-details">
                     <div class="event-detail">
                         <span class="detail-icon">✦</span>
-                        <span><strong>Jakarta, Indonesiaaa</strong><small>Lokasi simulasi</small></span>
+                        <span><strong>Jakarta, Indonesia</strong><small>Lokasi simulasi</small></span>
                     </div>
                     <span class="detail-divider"></span>
                     <div class="event-detail">
                         <span class="detail-icon">♡</span>
-                        <span><strong>Sabtu, 13 Desember 2026</strong><small>18.30 WIB · Pintu buka 16.00</small></span>
+                        <span><strong>Minggu, 13 Desember 2026</strong><small>18.30 WIB · Pintu buka 16.00</small></span>
                     </div>
                 </div>
                 <a class="button button-light" href="#daftar">Pilih tiket <span aria-hidden="true">↓</span></a>

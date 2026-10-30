@@ -74,8 +74,11 @@ class ConcertRegistrationController extends Controller
         });
 
         Mail::to($validated['email'])->send(new RegistrationEmail(
-            $validated['email'],
-            $validated['name']
+            userName: $booking['name'],
+            ticketName: $booking['ticket'],
+            ticketQuantity: $booking['quantity'],
+            totalPrice: $booking['total'],
+            bookingCode: $booking['code'],
         ));
 
         return to_route('concert.index')->with('booking', $booking);
