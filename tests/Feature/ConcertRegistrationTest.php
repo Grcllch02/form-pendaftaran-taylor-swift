@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Mail\RegistrationEmail;
 use App\Models\ConcertRegistration;
 use App\Models\ConcertTicketType;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class ConcertRegistrationTest extends TestCase
@@ -23,6 +25,8 @@ class ConcertRegistrationTest extends TestCase
 
     public function test_guest_can_register_for_tickets_and_receives_a_booking_code(): void
     {
+        Mail::fake();
+
         $ticketType = ConcertTicketType::query()->where('slug', 'cat-1')->firstOrFail();
 
         $response = $this->post(route('concert.register'), [
@@ -42,6 +46,10 @@ class ConcertRegistrationTest extends TestCase
                     && $booking['total'] === 6400000
                     && strlen($booking['code']) === 12;
             });
+
+        Mail::assertSent(RegistrationEmail::class, function (RegistrationEmail $mail): bool {
+            return $mail->hasTo('fan@example.com');
+        });
 
         $this->assertDatabaseHas('concert_registrations', [
             'name' => 'Taylor Fan',

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegistrationEmail;
 use App\Models\ConcertRegistration;
 use App\Models\ConcertTicketType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -71,8 +73,11 @@ class ConcertRegistrationController extends Controller
             ];
         });
 
-        return redirect()
-            ->route('concert.index')
-            ->with('booking', $booking);
+        Mail::to($validated['email'])->send(new RegistrationEmail(
+            $validated['email'],
+            $validated['name']
+        ));
+
+        return to_route('concert.index')->with('booking', $booking);
     }
 }

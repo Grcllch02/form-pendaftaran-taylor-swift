@@ -36,7 +36,7 @@
                 <div class="event-details">
                     <div class="event-detail">
                         <span class="detail-icon">✦</span>
-                        <span><strong>Jakarta, Indonesia</strong><small>Lokasi simulasi</small></span>
+                        <span><strong>Jakarta, Indonesiaaa</strong><small>Lokasi simulasi</small></span>
                     </div>
                     <span class="detail-divider"></span>
                     <div class="event-detail">
@@ -180,7 +180,7 @@
     </main>
 
     <footer class="site-footer">
-        <a class="brand footer-brand" href="{{ route('concert.index') }}"><span class="brand-star">✳</span><span>the eras <em>night</em></span></a>
+        <a class="brand footer-brand" href="{{ route('concert.index') }}"><span class="brand-star">✳</span><span>the eras <em>night beranda</em></span></a>
         <p>Proyek demo fan-made · Tidak berafiliasi dengan Taylor Swift atau pemegang hak terkait.</p>
         <span>MADE WITH <span class="footer-heart">♡</span> FOR THE MUSIC</span>
     </footer>
