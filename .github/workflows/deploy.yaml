@@ -67,6 +67,13 @@ jobs:
           DB_DATABASE: testing
           DB_USERNAME: root
           DB_PASSWORD: ""
+          
+      - name: Check NPM Files
+        run: |
+          pwd
+          ls -la
+          find . -name "package-lock.json"
+          find . -name "package.json"
 
       - name: Install NPM Dependencies & Build Assets
         run: |
